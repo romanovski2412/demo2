@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <a>Города</a>
+    <a href="people">Люди</a>
+    <a href="logout">Выйти</a>
+    <hr>
+    <a href="create-city">Создать новый город</a>
+    <table class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <td>Id</td>
+            <td>Название</td>
+            <td>Население</td>
+            <td>Туристический ли</td>
+            <td>Дата основания</td>
+            <td>Обновить</td>
+            <td>Удаление</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="city: ${cities}">
+            <td th:text="${city.id}"></td>
+            <td th:text="${city.name}"></td>
+            <td th:text="${city.population}"></td>
+            <td th:text="${city.touristic}"></td>
+            <td th:text="${city.foundationDate}"></td>
+            <td>
+                <a th:href="@{update-city(id=${city.id})}">обновить</a>
+            </td>
+            <td>
+                <a class="text-danger" th:href="@{delete-city(id=${city.id})}">удалить</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

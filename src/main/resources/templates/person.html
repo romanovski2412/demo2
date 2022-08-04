@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <a href="/">Города</a>
+    <a>Люди</a>
+    <a href="logout">Выйти</a>
+    <hr>
+    <a href="create-person">Добавить нового человека</a>
+    <table class="table table-striped">
+        <tr>
+            <td>Id</td>
+            <td>Имя</td>
+            <td>Возраст</td>
+            <td>Город</td>
+            <td>Обновить</td>
+            <td>Удаление</td>
+        </tr>
+        <tr th:each="person: ${people}">
+            <td th:text="${person.id}"></td>
+            <td th:text="${person.name}"></td>
+            <td th:text="${person.age}"></td>
+            <td th:text="${person.city.name}"></td>
+            <td>
+                <a th:href="@{update-person(id=${person.id})}">обновить</a>
+            </td>
+            <td>
+                <a class="text-danger" th:href="@{delete-person(id=${person.id})}">удалить</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
